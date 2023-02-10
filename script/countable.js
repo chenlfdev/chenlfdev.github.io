@@ -32,6 +32,7 @@ function plugin(hook, vm) {
         return content
     })
     hook.afterEach(function (html, next) {
+        window.scrollTo(0,0)
         if(vm.route.file.endsWith("README.md")){
             next(html)
             return
