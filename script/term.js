@@ -54,7 +54,7 @@
                 var i = 0;
                 for (i; i < lines.length; i++) {
                     var parts = lines[i].split('$ ');
-                    // 结果还是指令
+                    // 结果还是指令  user@machine:~$ command
                     if (parts.length > 1) {
                         // 指令
                         convertedText = convertedText + dealPath(parts[0].trim()) + "$ " + dealCommand(parts[1].trim()) + '</br>';
