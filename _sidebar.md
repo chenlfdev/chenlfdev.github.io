@@ -3,5 +3,5 @@
 
 
 **机器视觉**
-- [OpenCV](/ComputerVision/chapter/README.md)
+- [OpenCV](/ComputerVision/README.md)
 - [xxx](/README.md)

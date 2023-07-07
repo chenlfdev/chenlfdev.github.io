@@ -1,0 +1,1 @@
+<div style="text-align:center;"><img width=450px  src="/image/tg.gif" align="middle" /></div>
