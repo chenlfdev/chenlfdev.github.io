@@ -229,7 +229,7 @@ curPoints,statas,err = cv2.calcOpticalFlowPyrLK(lastFrameGray,curFrameGray,lastP
 
 <!-- div:right-panel -->
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/opticalFlow.gif" width="40%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/opticalFlow.gif" width="40%" align="middle" /></p>
 
 <!-- panels:end -->
 

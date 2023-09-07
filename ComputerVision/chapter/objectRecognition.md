@@ -19,12 +19,12 @@
   4. 使用筛选式级联把强的分类器级联在一起，从而提高检测准确度。
 
 <!-- div:right-panel -->
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/haarClassify.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/haarClassify.jpg" width="50%" align="middle" /></p>
 <!-- panels:end -->
 
 
 - **haar 特征提取：** 将 Haar-like 特征在图片上进行滑动，在每个位置计算白色区域对应的像素值的和减去黑色区域对应的像素值的和，从而提取出该位置的特征，
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/haar_like.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/haar_like.jpg" width="50%" align="middle" /></p>
 
 - <a href="https://github.com/opencv/opencv/tree/4.x/data/haarcascades" class="jump_link">OpenCV 提供的模型  </a> 或依照路径在源码中找
 
@@ -107,7 +107,7 @@ cv2.destroyAllWindows()
     - 去除噪声。
     - 使得结果容易理解。
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/PCA.jpg" width="100%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/PCA.jpg" width="100%" align="middle" /></p>
 
 
 # 2. dlib 实现
@@ -236,11 +236,11 @@ for i in range(len(points.parts())):
     point.y
 ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/dlib_facePoints.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/dlib_facePoints.png" width="50%" align="middle" /></p>
 
 **对于 dlib 通过模型找出的人脸特征点，输出结果是具有顺序的。通过对应位置的特征点，我们就能标记出眼睛、鼻子、嘴巴、眉毛的位置。** <span style="color:red;font-weight:bold"> 图上特征点的索引是从`1`开始的，在编程的时候，数组索引是从`0`开始的。 </span>
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/dlib_pointNumber.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/dlib_pointNumber.png" width="50%" align="middle" /></p>
 
 **特征点连线：**
 
@@ -252,7 +252,7 @@ pts = np.array([( point.x,point.y )for point in points.parts()],dtype=np.int32)
 cv2.polylines(img, [pts[36:42]], True,(255,0,0),2)
 ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/dlib_eye.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/dlib_eye.png" width="50%" align="middle" /></p>
 
 ## 2.5. 人脸识别
 
@@ -346,4 +346,4 @@ if __name__ == '__main__':
 </div>
 </details>
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/dlib_faceRecognition.png" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/dlib_faceRecognition.png" width="75%" align="middle" /></p>

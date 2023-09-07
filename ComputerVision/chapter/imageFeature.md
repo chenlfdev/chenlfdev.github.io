@@ -4,11 +4,11 @@
 
 - **定义：**  两条边的交点，或者说角点的局部邻域应该具有两个不同区域的不同方向的边界
 
- <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/corner.jpg" width="50%" align="middle" /></p>
+ <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/corner.jpg" width="50%" align="middle" /></p>
 
  ## 1.2. 原理
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/cornerFind.jpg" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/cornerFind.jpg" width="75%" align="middle" /></p>
 
 - **基本思想：** 角点周围的灰度值变化肯定较大
 - **检测原理：** 使用一个滑动窗口在灰度图上进行任意方向上的滑动，比较滑动前与滑动后两个位置的灰度值：
@@ -156,10 +156,10 @@
 
     **即对 $\left[\begin{array}{c} \Delta x \\  \Delta y \end{array}\right]$ 进行坐标变换，将原来的椭圆变换成了标准椭圆。$\lambda_1$值越大，说明对 $\hat{x}$ 方向上的移动越敏感，也就是说该方向上灰度值变化很大，$\lambda_2$同理。**
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/cornerEllipse.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/cornerEllipse.jpg" width="50%" align="middle" /></p>
 
 - **特征值与角点：**
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/cornerCognition.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/cornerCognition.jpg" width="50%" align="middle" /></p>
 
 - **角点判断指标：**
     $$
@@ -190,7 +190,7 @@ cv2.imshow('test',img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/cardCorner.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/cardCorner.jpg" width="50%" align="middle" /></p>
 
 # 2. SIFT 算法
 
@@ -212,14 +212,14 @@ cv2.destroyAllWindows()
 
 - **SIFT尺度空间**：不同大小的高斯核函数对图像进行卷积滤波同时在层级变换之间进行下采样来构建金字塔模式下的尺度空间。
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/gaussPyramidEye.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/gaussPyramidEye.jpg" width="50%" align="middle" /></p>
 
     1. **近大远小**：不同的`Octave`具有不同的分辨率。
     2. **模糊**：同一`Octave`下的图片，进行不同程度的「高斯滤波」
 
 - **高斯金字塔构建：**
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_gaussPyramid.jpg" width="100%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_gaussPyramid.jpg" width="100%" align="middle" /></p>
 
     1. 输入图像首先会进行一次高斯上采样（放大，红色箭头），然后再进行高斯模糊、高斯下采样得到金字塔的第一张图片（黄色箭头）。
     2. 高斯模糊标准计算公式为
@@ -235,13 +235,13 @@ cv2.destroyAllWindows()
         $$\sigma=\sqrt{\sigma_{target}^2 - \sigma_{last}^2}$$
     5. 高斯核的大小为 $(3\sigma + 1 \times 3 \sigma + 1)$ ，因为高斯分布的置信区间为 $[-3\sigma,3\sigma]$，利用上述「高斯滤波的叠加性」还能缩小每一次高斯核的尺寸，加快速度。
     6. 为了加速高斯滤波，高斯滤波还能分解为在水平方向一维滤波一次，然后再垂直方向再一维滤波一次。
-        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_gaussFilter.jpg" width="50%" align="middle" /></p>
+        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_gaussFilter.jpg" width="50%" align="middle" /></p>
 
 ## 2.3. 高斯差分金字塔
 
 - **实现：** 高斯金字塔中，同一级 Octave 中，不同模糊程度的相邻图片之间做差。**做差之后，相同的部分被剔除，差异部分被保留。** 
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/gaussDifference.jpg" width="75%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/gaussDifference.jpg" width="75%" align="middle" /></p>
 
 - **数学描述：** 
     
@@ -274,7 +274,7 @@ cv2.destroyAllWindows()
         \rm abs(D(x,y,\sigma)) > \frac{T}{2n} \qquad 通常取：T=0.04
         $$
     2. **初步查找：** 
-        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_roughDetect.jpg" width="25%" align="middle" /></p>
+        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_roughDetect.jpg" width="25%" align="middle" /></p>
 
         在「高斯差分金字塔」中，当前点（`x`位置）与邻近点（绿色圆圈）进行比较，判断当前点是否为局部极值，若是，就把「当前位置」记录下来。
 
@@ -284,7 +284,7 @@ cv2.destroyAllWindows()
 
 ## 2.5. 关键点精确定位
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_keypoint.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_keypoint.jpg" width="50%" align="middle" /></p>
 
 又由于差分层中的点为离散点，这样查找出来的关键点位置不一定是真正的极值点位置，所以还需要对其位置进行补偿。
 
@@ -399,7 +399,7 @@ $$
 
 绘制出 $\lambda_1 \in [0.001,20],\lambda_2 \in [0.001,20]$ 区域内， $f(\lambda_1 , \lambda_2) = \frac{(\lambda_1 + \lambda_2)^2}{\lambda_1\lambda_2}$ 的三维图，如下图所示。**可以看见当 $\lambda_1$ 或 $\lambda_2$ 某一个值太大时，就会导致 $f(\lambda_1,\lambda_2)$ 的值过大**。
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_HessianLambda.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_HessianLambda.jpg" width="50%" align="middle" /></p>
 
 为了观察 $\lambda_1$ 、$\lambda_2$ 对平面的影响，定义一个简单的二维平面 
 
@@ -418,7 +418,7 @@ $$
 
 其中 $a$、$b$ 就是特征值 $\lambda_1$ 、$\lambda_2$
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_HessiantCheck.png" width="100%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_HessiantCheck.png" width="100%" align="middle" /></p>
 
 <span style="color:red;font-weight:bold"> 从图中可以直观感受，不能放任 $\frac{(\lambda_1 + \lambda_2)^2}{\lambda_1\lambda_2}$ 的值过大，也不能让其为负数。该值过大时，就会导致所得到的极值点不明显；该值为负数时，得到的关键点为鞍点，不能要。</span>
 
@@ -453,7 +453,7 @@ plt.show()
 
 **通过上面的操作从高斯差分金字塔中获取到了一系列的关键点位置，「高斯差分金字塔」的任务也就完成了，下文开始所有操作回到「高斯金字塔」。**
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_Orientation.jpg" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_Orientation.jpg" width="75%" align="middle" /></p>
 
 1. 由于查找精确位置时，已经将 $[x,y,\sigma]^T$ 的值变成其他「浮点数」，这就导通过该坐标无法直接定位「高斯金字塔」的具体像素坐标了，例如图片中，根本不存在像素坐标 `[3.5,4.2]` 。
 2. **定位图片**：关键点坐标中的 $\sigma$ 距离哪张图片最近就选择哪张图片。
@@ -489,14 +489,14 @@ plt.show()
 
     其中 $m$ 可以取 `3`（$3\sigma_{img}$ 的置信度区间）；$d$ 描述符的尺寸。
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_descriptorBlock.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_descriptorBlock.jpg" width="50%" align="middle" /></p>
 
 2. 定位到的像素块朝关键点的方向进行旋转：**为了将关键点特征归一化，使其在不同的角度下都能恒定不变。旋转方法为「仿射变换」，具体介绍见图像变换章节。**
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_rotation.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_rotation.jpg" width="50%" align="middle" /></p>
 
 3. **像素点差值扩充：**  被框选住的像素点，还不够用于建立描述符，所以需要对原来的像素进行差值扩充，像素尺寸扩展到 `16 x 16`
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_descriptorCreate.jpg" width="75%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_descriptorCreate.jpg" width="75%" align="middle" /></p>
 
 4. **计算幅值与方向：** 同上文所述，计算 `16 x 16` 中每个像素点的梯度幅值与方向
 5. **描述符创建：** 将 `16 x 16` 拆分为 `16` 个 `4x4` 的小区域，并且每个区域进行直方图统计，记录下`8`个方向上的幅值，因此，一个关键点描述符的维度就为 `4*4*8=128`。
@@ -547,7 +547,7 @@ cv2.drawKeypoints(img,kp,img)
 - **思路：** 暴力匹配，遍历两张图片关键点的描述符，然后比较两个描述符之间的差异，例如计算两个描述符之间的距离。
 
 - **交叉检测（crossCheck）：** 蓝色图的关键点A与紫色图的关键点B匹配时，A 描述符与紫图中所有描述符最接近的点是 B，同时 B 描述符与蓝图中所有描述符最接近的点也要是 A，这样才认为 A 点与 B 点匹配。
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/BF_crosscheck.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/BF_crosscheck.jpg" width="50%" align="middle" /></p>
 
 
 ## 3.2. 1对1匹配
@@ -573,7 +573,7 @@ matchRes = sorted(matchRes,key=lambda x:x.distance)
 #           outImg[, matchColor[, singlePointColor[, matchesMask[, flags]]]]) -> outImg
 imgMatch = cv2.drawMatches(img1,kp1,img2,kp2,matchRes[:15],None,flags=2)
 ```
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/SIFT_match.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/SIFT_match.jpg" width="50%" align="middle" /></p>
 
 
 - <a href="https://docs.opencv.org/3.4/d4/de0/classcv_1_1DMatch.html" class="jump_link"> DMatch类 </a>：匹配返回的结果
@@ -619,11 +619,11 @@ imgMatch = cv2.drawMatchesKnn(img1,kp1,img2,kp2,goodMatchs,None,flags=2)
 
 1. 图片预处理，从图片中截取出目标。以下步骤中，目标图片大小为 `64 x 128` 。
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/HOG_preprocess.png" width="75%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/HOG_preprocess.png" width="75%" align="middle" /></p>
 
 2. 利用 Soble 算子，计算目标图片在横向与纵向上的梯度图
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/HOG_soble.png" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/HOG_soble.png" width="50%" align="middle" /></p>
 
 3. 根据横向方向的梯度 $g_x$ 与 纵向方向上的梯度 $g_y$ 计算总梯度和梯度方向
     $$
@@ -639,7 +639,7 @@ imgMatch = cv2.drawMatchesKnn(img1,kp1,img2,kp2,goodMatchs,None,flags=2)
 
     从上面的操作可以看出，<span style="color:red;font-weight:bold"> 方向梯度直方图实现了对图片特征的压缩提取。 </span>
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/HOG_histogram.png" width="75%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/HOG_histogram.png" width="75%" align="middle" /></p>
 
 <!-- panels:start -->
 <!-- div:left-panel -->
@@ -665,7 +665,7 @@ imgMatch = cv2.drawMatchesKnn(img1,kp1,img2,kp2,goodMatchs,None,flags=2)
 
 <!-- div:right-panel -->
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/hog-16x16-block-normalization.webp" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/hog-16x16-block-normalization.webp" width="50%" align="middle" /></p>
 
 <!-- panels:end -->
 

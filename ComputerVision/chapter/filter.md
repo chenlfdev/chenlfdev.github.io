@@ -40,7 +40,7 @@ cv2.blur(src, kernelSize:tuple[, dst[, anchor[, borderType]]]) -> dst
 ```
 - 效果：卷积核框住的像素点求均值
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/20230217103024.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/20230217103024.png" width="50%" align="middle" /></p>
 
 ## 2.2. 高斯滤波
 
@@ -56,7 +56,7 @@ $$
 
 其中 $\mu$ 为样本均值；$\sigma$为样本标准差。
 <!-- div:right-panel -->
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/gaussDistribution_1d.jpg" width="70%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/gaussDistribution_1d.jpg" width="70%" align="middle" /></p>
 <!-- panels:end -->
 
 <!-- panels:start -->
@@ -70,7 +70,7 @@ $$
 其中 $\mu_1,\mu_2$ 为 $x,y$ 的均值；$\sigma_1,\sigma_2$ 为 $x,y$ 的标准差；$\rho$ 为 $x,y$ 的相关系数。
 
 <!-- div:right-panel -->
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/gaussDistribution_2d.jpg" width="70%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/gaussDistribution_2d.jpg" width="70%" align="middle" /></p>
 <!-- panels:end -->
 
 二维高斯分布太复杂，作如下假设：
@@ -86,11 +86,11 @@ $$
 ### 2.2.2. 滤波
 
 1. 假定卷积核的中心坐标 $(x,y)$ 为 $(0,0)$ ，然后得到周围的坐标值
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/gaussKernelIndex.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/gaussKernelIndex.jpg" width="50%" align="middle" /></p>
 2. 将坐标值带入简化后的二维高斯分布概率密度函数，并取 $\sigma_1 = \sigma_2 =1.5$
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/gaussKernel2d.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/gaussKernel2d.jpg" width="50%" align="middle" /></p>
 3. 由于计算得到的值只是概率密度，并非概率值，所以还需要将其转为概率。求得整个卷积核的总加和值，然后每个值再除以总和值，得到高斯模板卷积核
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/gaussProperty.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/gaussProperty.jpg" width="50%" align="middle" /></p>
 4. 整数高斯模板：所有概率值除以左上角的概率值，然后四舍五入获得整数值。
 5. 最后用获得的高斯模板卷积核，进行卷积计算
 
@@ -104,7 +104,7 @@ cv2.GaussianBlur(src, kernelSize:tuple, sigmaX[, dst[, sigmaY[, borderType]]]) -
 
 - 效果：卷积核框住的所有像素进行加权平均，中心点权重大，远离中心点的像素权重值小；卷积核尺寸控制了参与加权平均的像素范围。
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/20230217104012.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/20230217104012.png" width="50%" align="middle" /></p>
 
 ## 2.3. 中值滤波
 
@@ -118,7 +118,7 @@ cv2.medianBlur(src, kernelSize:int[, dst]) -> dst
 ```
 - **椒盐噪声**：随机出现的「纯白点」或者「纯黑点」
 - 效果：去除「椒盐噪声」效果最好
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/20230217105020.png" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/20230217105020.png" width="75%" align="middle" /></p>
 
 ## 2.4. 双边滤波
 
@@ -128,7 +128,7 @@ cv2.medianBlur(src, kernelSize:int[, dst]) -> dst
 - **图像边缘：** 边缘的产生就是因为相邻的像素的颜色通道差别太大，因此，对相邻像素的颜色做差，就能标记出边缘（差值越大，就说明边缘的可能性越高）。
 - **算法思路：** 在高斯滤波的基础上在添加一个灰度距离权重。灰度距离越大，灰度距离权重越小，这样像素在高斯模糊中的占比就越小，进而**实现只对颜色相近的像素进行高斯滤波**。
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/bilateralFilter.jpg" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/bilateralFilter.jpg" width="75%" align="middle" /></p>
 
 - **算法：**
 
@@ -166,7 +166,7 @@ cv2.bilateralFilter(src, kernelSize:int, sigmaColor, sigmaSpace[, dst[, borderTy
 ```
 - **效果：** 同样的 $\sigma_s$ 值和卷积核大小，双边滤波轮廓清晰度更高，去高斯噪声能力相对弱一点。
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/bilateral.png" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/bilateral.png" width="75%" align="middle" /></p>
 
 # 3. 高通滤波(图像梯度)
 
@@ -178,7 +178,7 @@ cv2.bilateralFilter(src, kernelSize:int, sigmaColor, sigmaSpace[, dst[, borderTy
 ## 3.1. sobel 算子
 
 - **原理**：对图像邻近的灰度像素进行求导，斜率较大的地方，边缘的概率最大。
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/firstDerivative.jpg" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/firstDerivative.jpg" width="50%" align="middle" /></p>
 - **差分法**：图像中近似求导的方法
     $$
     I'(x_i) = \frac{I(x_{i+1}) -I(x_i) }{x_{i+1} - x_i}
@@ -244,7 +244,7 @@ cv2.destroyAllWindows()
 </div>
 </details>
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/sobel.png" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/sobel.png" width="75%" align="middle" /></p>
 
 > [!note]
 > - `Sobel`计算，会导致像素值为负，因此输出图像的位深`ddepth`应当使用「有符号类型」，例如`cv2.CV_16S`、`cv2.CV_32F`等
@@ -277,7 +277,7 @@ cv2.destroyAllWindows()
 cv2.Scharr(src, ddepth, dx, dy[, dst[, scale[, delta[, borderType]]]]) -> dst
 ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/scharrx.png" width="25% " align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/scharrx.png" width="25% " align="middle" /></p>
 ## 3.3. 拉普拉斯算子
 
 - **思想：** Sobel算子是对像素求解一阶导数，最大值处就是边缘；对一阶导数再求导，那么零值处就是边缘，**但是，由于利用差分进行计算而且像素点也是离散的，进度丢失大，这个「零」的表现其实不明显。边界显示的还是主要两边的峰值。**
@@ -326,7 +326,7 @@ cv2.Scharr(src, ddepth, dx, dy[, dst[, scale[, delta[, borderType]]]]) -> dst
     ```python
     cv2.Laplacian(src, ddepth:cv2.CV_[, dst[, ksize:int[, scale[, delta[, borderType]]]]]) -> dst
     ```
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/laplacian.png" width="25%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/laplacian.png" width="25%" align="middle" /></p>
 
 > [!note]
 > - Sobel算子主要用于检测水平和垂直边缘
@@ -357,14 +357,14 @@ cv2.Scharr(src, ddepth, dx, dy[, dst[, scale[, delta[, borderType]]]]) -> dst
     $$
 3. 非极大值抑制：得到的 $I_s$ 非局部极大值，就全部舍弃掉。**进行边缘预选**
    1. 线性差值法：对比 $I_s(x_i,y_i)$ 与 $I_1$ 、$I_2$ 的值，若 $I_s(x_i,y_i)$ 最大，则保留作为边界，否则舍弃掉。$I_1$ 、$I_2$ 根据 $\theta$ 进行插值计算。
-        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/canny_linear.jpg" width="50%" align="middle" /></p>
+        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/canny_linear.jpg" width="50%" align="middle" /></p>
 
     2. 角度近似：将中心点周围的像素非为8个方向（$0^\circ、45^\circ、90^\circ$等），然后 $\theta$ 离哪个角度近，就用这个角度直线上的梯度值与中心点梯度进行比较，中心点最大就保留，否则舍弃。
-        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/canny_4.png" width="50%" align="middle" /></p>
+        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/canny_4.png" width="50%" align="middle" /></p>
 
 4. 双阈值检测：**确定最终边缘**
 
-    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/canny_5.png" width="50%" align="middle" /></p>
+    <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/canny_5.png" width="50%" align="middle" /></p>
     
 
 ### 3.4.2. OpenCV 代码
@@ -374,7 +374,7 @@ cv2.Scharr(src, ddepth, dx, dy[, dst[, scale[, delta[, borderType]]]]) -> dst
 # threshold2：maxVal
 cv2.Canny(image, threshold1, threshold2[, edges[, apertureSize[, L2gradient]]]) -> edges
 ```
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/canny.png" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/canny.png" width="75%" align="middle" /></p>
 
 # 附录：高斯滤波的叠加性
 

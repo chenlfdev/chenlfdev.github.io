@@ -131,7 +131,7 @@ $$
 
 ### 3.2.2. 旋转
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/rotation_transform.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/rotation_transform.jpg" width="50%" align="middle" /></p>
 
 像素点$P_c(x_c,y_c)$ 点逆时针旋转 $\theta$ 角，旋转到 $P(x,y)$  位置。可以当作是坐标系 $Ox_c y_c$ 逆时针旋转 $- \theta$ 角后，$P_c$ 像素点在 $Oxy$ 坐标系的位置，因此可以推导出坐标变换
 $$
@@ -398,7 +398,7 @@ $$
 
 透视的目的就是实现 **近大远小**，也就是需要有纵向的深度，而像素位置 $(x,y)$ 只能表示像素在平面上的位置关系，此时「齐次坐标」就能排上用场了。三维的齐次坐标虽然表示的二维的平面，但是其本质还是一个三维空间的坐标值，这样就能将图片像素由「二维空间」扩展到「三维空间」进行处理，齐次坐标的`w`分量也就有了新的含义：三维空间的深度。
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/perspective.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/perspective.jpg" width="50%" align="middle" /></p>
 
 
 在「仿射变换」中，像素的齐次坐标为 $[x,y,1]^T$，可以解释为图像位于三维空间 的 $w=1$ 平面上，即 $w=1$ 平面就是我们在三维空间中的视线平面（三维空间中的所有东西都被投影到 $w=1$ 平面，然后我们才能看见）。「透视」就规定了所有物体如何投影到视线平面上，即「近大远小」。数学描述就是根据像素三维空间中的坐标点 $P(x,y,w)$ 得出像素在视线平面上的坐标 $P_e(x_e,y_e,1)$，两个关系如图所示，根据三角形相似定理就能得出：
@@ -444,7 +444,7 @@ $$
 
 根据「仿射变换」可知，上述矩阵就能实现图片像素坐标 $[x_e,y_e,1]^T$ 在三维空间中的旋转、缩放、切变的变换操作（没有三维空间的平移，变换矩阵差一个维度），得到像素位置变换后的三维坐标就为 $[x,y,w]^T$。再将新的像素齐次坐标进行透视处理，将坐标映射到 $w=1$ 平面， 得到的像素位置就是最终「透视变换」的结果。
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/perspectiveTransform.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/perspectiveTransform.jpg" width="50%" align="middle" /></p>
 
 因此透视变换的变换矩阵就能改写为
 
@@ -646,4 +646,4 @@ destImage = cv2.copyMakeBorder(src: Mat,
   - `BORDER_WRAP`:外包装法，abcd | abcd | abcd ，重复原图
   - `BORDER_CONSTANT`:常量法，边界用常数值填充。111 | abcd | 111
 
-  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/makeBorder_categories.jpg" width="50%" align="middle" /></p>
+  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/makeBorder_categories.jpg" width="50%" align="middle" /></p>

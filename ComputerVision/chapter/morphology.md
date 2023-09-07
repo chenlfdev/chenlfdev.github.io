@@ -22,7 +22,7 @@ ret,destImg = cv2.threshold(img,0,maxVal,flags | cv2.THRESH_OTSU)
       - \> threshVal：通道值大于阈值时，取值为`maxVal`
       - < threshVal：通道值大于阈值时，不变
   - **`cv2.THRESH_OTSU`：自动计算 `threshVal` 值**
-  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/Image_Thresholding_1.png" width="50%" align="middle" /></p>
+  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/Image_Thresholding_1.png" width="50%" align="middle" /></p>
 
 > [!tip]
 > 当图片的明暗分布不能简单的通过一个`threshVal`进行划分时，就要使用自适应算法`adaptiveThreshold`
@@ -37,13 +37,13 @@ ret,destImg = cv2.threshold(img,0,maxVal,flags | cv2.THRESH_OTSU)
 # C：它只是一个常数，会从平均值或加权平均值中减去该值
 cv2.adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize, C[, dst]) -> dst
 ```
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/AdaptiveThreshold.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/AdaptiveThreshold.png" width="50%" align="middle" /></p>
 
 # 2. 腐蚀和膨胀
 
 ## 2.1. 腐蚀
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/erosion.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/erosion.jpg" width="50%" align="middle" /></p>
 
 - **原理：**  卷积核中值为`1`框住的像素中，存在「零」时，卷积核中心对于的像素为「零」。
 
@@ -55,11 +55,11 @@ cv2.erode(src, kernel:np.ndarray[, dst[, anchor[, iterations[, borderType[, bord
 cv2.getStructuringElement(shape, ksize[, anchor]) -> retval
 ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/erosion.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/erosion.png" width="50%" align="middle" /></p>
 
 ## 2.2. 膨胀
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/dilate.jpg" width="25%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/dilate.jpg" width="25%" align="middle" /></p>
 
 - **原理：** 卷积核中值为`1`框住的像素中，存在「非零」时，卷积核中心对于的像素为「非零」。
 
@@ -68,7 +68,7 @@ cv2.getStructuringElement(shape, ksize[, anchor]) -> retval
 cv2.dilate(src, kernel:np.ndarray[, dst[, anchor[, iterations[, borderType[, borderValue]]]]]) -> dst
 ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/dilate.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/dilate.png" width="50%" align="middle" /></p>
 
 # 3. 形态操作
 

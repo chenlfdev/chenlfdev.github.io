@@ -7,5 +7,5 @@
 > 学习笔记。
 - 计算机视觉
 
-[GitHub](https://github.com/fupobaobaowoya/fupobaobaowoya.github.io)
+[GitHub](https://github.com/chenlfdev/chenlfdev.github.io)
 [Get Started](/README.md)

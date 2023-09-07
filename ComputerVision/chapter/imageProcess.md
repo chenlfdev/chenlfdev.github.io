@@ -2,7 +2,7 @@
 
 # 1. 图像金字塔
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/Pyramid_1.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/Pyramid_1.png" width="50%" align="middle" /></p>
 
 - **作用：** 将图像根据分辨率大小分为多个档次。
 
@@ -12,11 +12,11 @@
   1. 首先进行高斯滤波
   2. 去除偶数的行、列
   
-   <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/Pyramid_2.png" width="50%" align="middle" /></p>
+   <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/Pyramid_2.png" width="50%" align="middle" /></p>
 
 - 向上采用（放大图片）：
     1. 用「零」填充偶数行、列
-        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/GaussPyramid.jpg" width="50%" align="middle" /></p>
+        <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/GaussPyramid.jpg" width="50%" align="middle" /></p>
     2. 对放大的图片进行高斯卷积，将「零」值进行填充
 
 ```python
@@ -42,7 +42,7 @@ $$
 
 其中，$G_i$是第$i$级高斯金字塔图像，$U$是上采样算子，$k$是高斯卷积核，$*$是卷积操作。由于高斯卷积具有尺度不变性，因此通过对图像进行不同程度的高斯平滑，可以生成不同尺度的高斯金字塔图像。
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/Pyramid_4.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/Pyramid_4.png" width="50%" align="middle" /></p>
 
 迭代执行上面的公式，就能得到每一层的图像。
 
@@ -67,7 +67,7 @@ cv2.findContours(image, mode, method[, contours[, hierarchy[, offset]]]) ->image
 - method: 重新绘制轮廓的算法
   - CHAIN_APPROX_NONE:以Freeman链码的方式输出轮廓，轮廓信息完整保留
   - CHAIN_APPROX_SIMPLE:压缩水平的、垂直的和斜的部分，只保留顶点。
-  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/approxContoursMethod.jpg" width="50%" align="middle" /></p>
+  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/approxContoursMethod.jpg" width="50%" align="middle" /></p>
 
 
 > [!note|style:flat]
@@ -104,7 +104,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/approxContour.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/approxContour.png" width="50%" align="middle" /></p>
 
 </div>
 </details>
@@ -123,7 +123,7 @@ arc = cv2.arcLength(cnt,True)
 
 ## 2.4. 轮廓近似
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/approxContour1.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/approxContour1.jpg" width="50%" align="middle" /></p>
 
 近似弧线 $\stackrel\frown{AB}$，首先连接A、B两点做直线 $\overline{AB}$；然后找 $\stackrel\frown{AB}$ 到 $\overline{AB}$ 最长的距离，假设$C$距离$\overline{AB}$最大，且距离为 $d$；最后对比 $d$ 与阈值 $\epsilon$ 的大小，若 $d < \epsilon$，则用直线 $\overline{AB}$ 近似曲线 $\stackrel\frown{AB}$，否则将$\stackrel\frown{AB}$ 拆分为 $\stackrel\frown{AC}$ 与 $\stackrel\frown{CB}$ 重复上述步骤。
 
@@ -161,7 +161,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/approxContour2.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/approxContour2.png" width="50%" align="middle" /></p>
 
 </div>
 </details>
@@ -212,7 +212,7 @@ cv2.imshow('res', draw_img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/convexhull.png" width="25%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/convexhull.png" width="25%" align="middle" /></p>
 
 </div>
 </details>
@@ -236,7 +236,7 @@ cv2.destroyAllWindows()
     cv2.drawContours(img,[box],0,(0,0,255),2)
     ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/boundingrect.png" width="25%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/boundingrect.png" width="25%" align="middle" /></p>
 
 ### 2.5.3  圆形
 
@@ -255,7 +255,7 @@ cv2.destroyAllWindows()
   cv2.ellipse(img,ellipse,(0,255,0),2)
   ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/fitellipse.png" width="25%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/fitellipse.png" width="25%" align="middle" /></p>
 
 
 # 3. 模板匹配
@@ -325,11 +325,11 @@ matchTemplate(image, templ, method[, result[, mask]]) -> result
 
 # 4. 直方图
 - **理论：** 直方图是一种统计图表，用来展示数据分布的情况。通常将横轴分割成若干个区间，统计每个区间中数据出现的次数，将这些次数表示为柱状图上对应区间的高度。这样就能直观地看出数据的分布情况
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/histogram_sample.jpg" width="25%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/histogram_sample.jpg" width="25%" align="middle" /></p>
 
 ## 4.1. 绘制直方图
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/imageHistogram.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/imageHistogram.jpg" width="50%" align="middle" /></p>
 
 直方图的横坐标为像素通道值的取值范围；纵坐标为数值出现的次数。
 
@@ -377,15 +377,15 @@ plt.xlim([0,256])
 plt.show()
 ```
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/hist_mark.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/hist_mark.png" width="50%" align="middle" /></p>
 
 ## 4.2. 均衡化
 
 ### 4.3.1. 理论
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/idealEqualization.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/idealEqualization.jpg" width="50%" align="middle" /></p>
 
 - **目的：** 将原图像通过变换，得到一幅灰度直方图的「灰度值均匀分布」的新图像。对在图像中像素个数多的灰度级进行展宽，而对像素个数少的灰度级进行缩减。从而达到清晰图像的目的。**最理想的情况就是变换后，像素灰度概率是完全一样的，但是实际上做不到那么平均。**
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/equalization.jpg" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/equalization.jpg" width="75%" align="middle" /></p>
 
 - **算法流程：** 首先统计出灰度值与其出现次数的直方图；然后对灰度值升序排序；接着计算出现概率（出现次数 / 总像素），并根据灰度值从低到高计算累计概率（当前概率 + 之前的总概率）；最后根据公式：累计概率 * （位深最大值 - 0），将数值映射到[位深最大值,0]。
 
@@ -418,7 +418,7 @@ cv2.destroyAllWindows()
 </div>
 </details>
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/equalizationImage.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/equalizationImage.png" width="50%" align="middle" /></p>
 
 ## 4.3. CLAHE
 
@@ -433,14 +433,14 @@ cv2.destroyAllWindows()
 
 - **算法实现：**
   1. 图像分块
-      <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/claheBlock.jpg" width="25%" align="middle" /></p>
+      <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/claheBlock.jpg" width="25%" align="middle" /></p>
 
   2. 找每个块的中心点（黄色标记）
-      <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/claheBlockCenter.jpg" width="25%" align="middle" /></p>
+      <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/claheBlockCenter.jpg" width="25%" align="middle" /></p>
 
   3. 分别计算每个块的灰度直方图，并进行「阈值限制」
   
-      <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/claheHistogram.jpg" width="50%" align="middle" /></p>
+      <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/claheHistogram.jpg" width="50%" align="middle" /></p>
 
       绘制好直方图后，柱子的分布值与设定「阈值」进行比较，超过阈值的部分则进行裁剪，并均匀分配给所有的柱子。分配后，直方图又要柱子超出时（绿色部分），继续重复上述操作，直至直方图柱子都在「阈值」下方。<span style="color:red;font-weight:bold"> 现在只是对「直方图分布」进行修改，并没有修改原始图像的任何内容。 </span>
     
@@ -484,7 +484,7 @@ cv2.destroyAllWindows()
 
 </div>
 </details>
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/clahe.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/clahe.png" width="50%" align="middle" /></p>
 
 # 5. 图像傅里叶变换
 
@@ -497,7 +497,7 @@ cv2.destroyAllWindows()
 
 - **思想：** 二维傅里叶变换中，认为二维数据是由无数个「正弦平面波」所构成。
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/fourier2d.jpg" width="75%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/fourier2d.jpg" width="75%" align="middle" /></p>
 
 - **离散傅里叶变换公式：**
 
@@ -509,7 +509,7 @@ cv2.destroyAllWindows()
 
 ## 5.2. 正弦平面波
 
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/sinPlane.jpg" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/sinPlane.jpg" width="50%" align="middle" /></p>
 
 - **直观定义：** 将一维正弦曲线朝着纵向的一个方向上将其拉伸得到一个三维的波形，然后将波形的幅值变化用二维平面进行表示，再将二维平面波绘制成灰度图，即波峰为白色、波谷为黑色。
 
@@ -561,11 +561,11 @@ cv2.destroyAllWindows()
   cv2.imshow('dft',A)
   ```
 
-  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/dftResult.png" width="50%" align="middle" /></p>
+  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/dftResult.png" width="50%" align="middle" /></p>
 
   > [!tip]
   > 由于离散傅里叶变换具有「共轭对称性」，上面的输出结果其实是被重复了`3`次。具体结果只需看「左上角矩形」就行，其余的都是重复。
-  > <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/dftCoordination.jpg" width="25%" align="middle" /></p>
+  > <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/dftCoordination.jpg" width="25%" align="middle" /></p>
 
 
 - **频谱图中心化**
@@ -575,7 +575,7 @@ cv2.destroyAllWindows()
   shiftA = np.fft.fftshift(A)
   ```
   **作用**：挪动四个范围的频谱，让低频区域在图像中心，方便「滤波」操作。
-  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/dftShift.jpg" width="50%" align="middle" /></p>
+  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/dftShift.jpg" width="50%" align="middle" /></p>
 
 ## 5.5. 傅里叶滤波
 
@@ -585,7 +585,7 @@ cv2.destroyAllWindows()
   3. 对修改后的傅里叶变换结果进行傅里叶反变换
 
 - **低通滤波：** 将低频部分的结果全置为零
-<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/lowPass.png" width="50%" align="middle" /></p>
+<p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/lowPass.png" width="50%" align="middle" /></p>
 
   <details>
   <summary><span class="details-title">Python代码</span></summary>
@@ -630,7 +630,7 @@ cv2.destroyAllWindows()
 
 - **高通滤波：** 将高频部分的结果全置为零
 
-  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/fupobaobaowoya/pic-store/img/highPass.png" width="50%" align="middle" /></p>
+  <p style="text-align:center;"><img src="https://cdn.jsdelivr.net/gh/chenlfdev/pic-store/img/highPass.png" width="50%" align="middle" /></p>
 
   <details>
   <summary><span class="details-title">Python代码</span></summary>
